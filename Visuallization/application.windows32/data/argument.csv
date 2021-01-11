@@ -1,0 +1,2 @@
+Input File,Ouput File,Start Hour,Start Minute,Start Pos,End Pos,Sample Rate
+tagData.csv,test,0,30,0,-1,1
