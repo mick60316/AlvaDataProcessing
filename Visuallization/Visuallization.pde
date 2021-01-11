@@ -95,8 +95,6 @@ void drawForeground()
       noStroke();
       circle(posCount-5, 710, 4);
     }
-
-
     posCount++;
     if (posCount==1919)
     {
@@ -125,6 +123,41 @@ void drawForeground()
       lineStartPos =lineEndPos;
       drawBackground();
     }
+  }
+  if (posCount !=0)
+  {
+    for (int i =lineStartPos; i<endPos; i+=sampleRate)
+    {
+      if (map.containsKey(db[i].MPI))
+      {
+        int type = map.get(db[i].MPI);
+        stroke (c[type]);
+      } else
+      {
+        stroke(0, 0, 0);
+      }
+      line(posCount, 500, posCount, 700);
+      if (db[i].getMLI().equals("Kick"))
+      {
+
+        fill(255, 192, 0);
+        stroke(0, 0, 0);
+        noStroke();
+        circle(posCount-5, 710, 4);
+      }
+    }
+    int pos1 =(int)((float)(lineStartPos*1920.0/count));
+    fill(255, 0, 0);
+    rect(pos1, 175, 1920-pos1, 50);
+    fill(255);
+
+    stroke(255);
+    line(0, 750, 1920, 750);
+    for (int j =0; j<10; j++)
+    {
+      line(j*1920/10, 700, j*1920/10, 800);
+    }
+    save(outFile+"_"+lineStartPos+"_final"+".jpg");
   }
 }
 void drawBackground ()
